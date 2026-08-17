@@ -1336,6 +1336,512 @@ img {
   transform: translateX(5px);
 }
 
+/* =========================================================
+   Projects Page
+   ========================================================= */
+
+.projects-page {
+  padding-top: 90px;
+}
+
+
+.projects-page-header {
+  max-width: 760px;
+
+  margin-bottom: 70px;
+}
+
+
+.projects-page-header h1 {
+  margin-bottom: 22px;
+}
+
+
+.projects-page-header > p:last-child {
+  color: var(--color-text-muted);
+
+  font-size: 1.1rem;
+}
+
+
+/* =========================================================
+   Project List
+   ========================================================= */
+
+.projects-list {
+  display: grid;
+
+  gap: 14px;
+}
+
+
+.project-list-card {
+  background: var(--color-surface);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-medium);
+
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+.project-list-card:hover {
+  border-color:
+    rgba(231, 182, 75, 0.5);
+
+  transform: translateY(-2px);
+}
+
+
+.project-list-card > a {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(280px, 0.5fr);
+
+  gap: 50px;
+
+  padding: 30px;
+}
+
+
+.project-list-card h2 {
+  margin-bottom: 10px;
+
+  font-size: 1.5rem;
+}
+
+
+.project-list-card p {
+  max-width: 700px;
+
+  margin-bottom: 0;
+
+  color: var(--color-text-muted);
+}
+
+
+/* =========================================================
+   Project List Meta
+   ========================================================= */
+
+.project-list-meta {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 25px;
+}
+
+
+.project-status-inline {
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+.project-list-meta ul {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  justify-content: flex-end;
+
+  gap: 6px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.project-list-meta li {
+  padding: 4px 8px;
+
+  color: var(--color-text-muted);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: 4px;
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   Project Detail
+   ========================================================= */
+
+.project-detail-header {
+  padding:
+    80px 0 70px;
+
+  border-bottom:
+    1px solid var(--color-border);
+}
+
+
+.project-back {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 55px;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 13px;
+
+  transition:
+    color var(--transition-fast);
+}
+
+
+.project-back:hover {
+  color:
+    var(--color-accent);
+}
+
+
+.project-detail-heading {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 900px)
+    auto;
+
+  justify-content:
+    space-between;
+
+  gap: 60px;
+}
+
+
+.project-detail-heading h1 {
+  margin-bottom: 25px;
+}
+
+
+.project-lead {
+  max-width: 760px;
+
+  margin-bottom: 0;
+
+  color:
+    var(--color-text-muted);
+
+  font-size:
+    clamp(1.05rem, 1.5vw, 1.25rem);
+
+  line-height: 1.7;
+}
+
+
+.project-detail-status {
+  padding-top: 15px;
+}
+
+
+/* =========================================================
+   Project Meta
+   ========================================================= */
+
+.project-meta {
+  background:
+    rgba(255, 255, 255, 0.015);
+
+  border-bottom:
+    1px solid var(--color-border);
+}
+
+
+.project-meta-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr 1fr 2fr;
+
+  gap: 40px;
+
+  padding-block: 28px;
+}
+
+
+.project-meta-grid > div {
+  min-width: 0;
+}
+
+
+.project-meta-grid span {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 9px;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+}
+
+
+.project-meta-grid strong {
+  font-size: 13px;
+
+  font-weight: 500;
+}
+
+
+.project-meta-grid ul {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.project-meta-grid li {
+  padding: 3px 7px;
+
+  color:
+    var(--color-text-muted);
+
+  border:
+    1px solid var(--color-border);
+
+  border-radius: 4px;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   Documentation Layout
+   ========================================================= */
+
+.project-documentation {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 780px)
+    230px;
+
+  justify-content:
+    space-between;
+
+  gap: 80px;
+
+  padding-top: 80px;
+  padding-bottom: 130px;
+}
+
+
+/* =========================================================
+   Markdown Content
+   ========================================================= */
+
+.project-content {
+  min-width: 0;
+}
+
+
+.project-content h1 {
+  display: none;
+}
+
+
+.project-content h2 {
+  margin-top: 70px;
+  margin-bottom: 20px;
+
+  padding-bottom: 12px;
+
+  border-bottom:
+    1px solid var(--color-border);
+
+  font-size: 1.8rem;
+}
+
+
+.project-content h2:first-child {
+  margin-top: 0;
+}
+
+
+.project-content h3 {
+  margin-top: 45px;
+  margin-bottom: 15px;
+
+  font-size: 1.3rem;
+}
+
+
+.project-content p {
+  margin-bottom: 24px;
+
+  color:
+    #c5c9cc;
+}
+
+
+.project-content ul,
+.project-content ol {
+  margin:
+    0 0 30px;
+
+  padding-left: 25px;
+
+  color:
+    #c5c9cc;
+}
+
+
+.project-content li {
+  margin-bottom: 8px;
+}
+
+
+.project-content a {
+  color:
+    var(--color-accent);
+
+  text-decoration: underline;
+
+  text-underline-offset: 4px;
+}
+
+
+.project-content code {
+  padding: 2px 6px;
+
+  background:
+    #151d22;
+
+  border:
+    1px solid var(--color-border);
+
+  border-radius: 4px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.9em;
+}
+
+
+.project-content pre {
+  overflow-x: auto;
+
+  margin:
+    30px 0;
+
+  padding: 22px;
+
+  background:
+    #06090b;
+
+  border:
+    1px solid var(--color-border);
+
+  border-radius:
+    var(--radius-medium);
+}
+
+
+.project-content pre code {
+  padding: 0;
+
+  background: none;
+
+  border: 0;
+}
+
+
+/* =========================================================
+   Table of Contents
+   ========================================================= */
+
+.project-toc {
+  position: sticky;
+
+  top: 120px;
+
+  align-self: start;
+
+  padding-left: 22px;
+
+  border-left:
+    1px solid var(--color-border);
+}
+
+
+.project-toc > p {
+  margin-bottom: 17px;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+}
+
+
+.project-toc ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.project-toc li {
+  margin-bottom: 10px;
+}
+
+
+.project-toc a {
+  color:
+    var(--color-text-muted);
+
+  font-size: 12px;
+
+  transition:
+    color var(--transition-fast);
+}
+
+
+.project-toc a:hover {
+  color:
+    var(--color-accent);
+}
 
 /* =========================================================
    Responsive
@@ -1425,7 +1931,73 @@ img {
     width: 190px;
   }
 
+  .project-list-card > a {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+
+    padding: 24px;
+  }
+
+   .project-list-meta {
+    align-items: flex-start;
+    }
+
+    .project-list-meta ul {
+    justify-content: flex-start;
+    }
+
+    .project-detail-header {
+  padding:
+    55px 0 50px;
 }
+
+.project-back {
+  margin-bottom: 40px;
+}
+
+.project-detail-heading {
+  grid-template-columns: 1fr;
+
+  gap: 25px;
+}
+
+.project-detail-status {
+  padding-top: 0;
+}
+
+.project-meta-grid {
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 25px;
+}
+
+.project-documentation {
+  grid-template-columns: 1fr;
+
+  gap: 50px;
+
+  padding-top: 55px;
+  padding-bottom: 80px;
+}
+
+.project-toc {
+  position: static;
+
+  grid-row: 1;
+
+  padding-left: 0;
+  padding-bottom: 25px;
+
+  border-left: 0;
+
+  border-bottom:
+    1px solid var(--color-border);
+}
+
+}
+
 
 @media (max-width: 480px) {
 
@@ -1477,6 +2049,10 @@ img {
   .project-card-content {
     min-height: auto;
   }
+
+  .project-meta-grid {
+  grid-template-columns: 1fr;
+}
 
 }
 

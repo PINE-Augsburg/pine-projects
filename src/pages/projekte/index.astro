@@ -1,0 +1,109 @@
+---
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const projects = await getCollection("projects");
+
+const sortedProjects = projects.sort(
+  (a, b) =>
+    b.data.date.getTime() -
+    a.data.date.getTime()
+);
+
+const statusLabels = {
+  active: "Aktiv",
+  stable: "Stabil",
+  development: "In Entwicklung",
+  archived: "Archiviert",
+};
+---
+
+<BaseLayout
+  title="Projekte"
+  description="Alle Projekte rund um Home Automation, ESP32, IoT, Server, 3D-Druck und DIY."
+>
+
+  <section class="section projects-page">
+
+    <div class="container">
+
+      <header class="projects-page-header">
+
+        <p class="section-eyebrow">
+          PINE PROJECTS
+        </p>
+
+        <h1>
+          Projekte
+        </h1>
+
+        <p>
+          Dokumentationen meiner Projekte rund um
+          Home Automation, IoT, Server, 3D-Druck und DIY.
+        </p>
+
+      </header>
+
+
+      <div class="projects-list">
+
+        {
+          sortedProjects.map((project) => (
+
+            <article class="project-list-card">
+
+              <a href={`/projekte/${project.id}`}>
+
+                <div>
+
+                  <p class="project-category">
+                    {project.data.category}
+                  </p>
+
+                  <h2>
+                    {project.data.title}
+                  </h2>
+
+                  <p>
+                    {project.data.description}
+                  </p>
+
+                </div>
+
+
+                <div class="project-list-meta">
+
+                  <span
+                    class={`project-status-inline status-${project.data.status}`}
+                  >
+                    {statusLabels[project.data.status]}
+                  </span>
+
+
+                  <ul>
+                    {
+                      project.data.technologies.map(
+                        (technology) => (
+                          <li>{technology}</li>
+                        )
+                      )
+                    }
+                  </ul>
+
+                </div>
+
+              </a>
+
+            </article>
+
+          ))
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+</BaseLayout>

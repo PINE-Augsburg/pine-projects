@@ -1,0 +1,215 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+
+  return projects.map((project) => ({
+    params: {
+      id: project.id,
+    },
+    props: {
+      project,
+    },
+  }));
+}
+
+const { project } = Astro.props;
+
+const { Content, headings } = await render(project);
+
+const statusLabels = {
+  active: "Aktiv",
+  stable: "Stabil",
+  development: "In Entwicklung",
+  archived: "Archiviert",
+};
+
+const formattedDate = project.data.date.toLocaleDateString(
+  "de-DE",
+  {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  }
+);
+---
+
+<BaseLayout
+  title={project.data.title}
+  description={project.data.description}
+>
+
+  <article class="project-detail">
+
+    <!-- Kopfbereich -->
+
+    <header class="project-detail-header">
+
+      <div class="container">
+
+        <a
+          href="/projekte"
+          class="project-back"
+        >
+          <span aria-hidden="true">←</span>
+          Alle Projekte
+        </a>
+
+
+        <div class="project-detail-heading">
+
+          <div>
+
+            <p class="section-eyebrow">
+              {project.data.category}
+            </p>
+
+            <h1>
+              {project.data.title}
+            </h1>
+
+            <p class="project-lead">
+              {project.data.description}
+            </p>
+
+          </div>
+
+
+          <div class="project-detail-status">
+
+            <span
+              class={`project-status-inline status-${project.data.status}`}
+            >
+              {statusLabels[project.data.status]}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- Projektinformationen -->
+
+    <div class="project-meta">
+
+      <div class="container project-meta-grid">
+
+        <div>
+          <span>Status</span>
+
+          <strong>
+            {statusLabels[project.data.status]}
+          </strong>
+        </div>
+
+
+        <div>
+          <span>Veröffentlicht</span>
+
+          <strong>
+            {formattedDate}
+          </strong>
+        </div>
+
+
+        <div>
+          <span>Kategorie</span>
+
+          <strong>
+            {project.data.category}
+          </strong>
+        </div>
+
+
+        <div>
+          <span>Technologien</span>
+
+          <ul>
+            {
+              project.data.technologies.map(
+                (technology) => (
+                  <li>{technology}</li>
+                )
+              )
+            }
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Dokumentation -->
+
+    <div class="container project-documentation">
+
+      <!-- Hauptinhalt -->
+
+      <div class="project-content">
+
+        <Content />
+
+      </div>
+
+
+      <!-- Inhaltsverzeichnis -->
+
+      {
+        headings.length > 0 && (
+
+          <aside class="project-toc">
+
+            <p>
+              AUF DIESER SEITE
+            </p>
+
+            <nav
+              aria-label="Inhaltsverzeichnis"
+            >
+
+              <ul>
+
+                {
+                  headings
+                    .filter(
+                      (heading) =>
+                        heading.depth === 2
+                    )
+                    .map(
+                      (heading) => (
+
+                        <li>
+
+                          <a
+                            href={`#${heading.slug}`}
+                          >
+                            {heading.text}
+                          </a>
+
+                        </li>
+
+                      )
+                    )
+                }
+
+              </ul>
+
+            </nav>
+
+          </aside>
+
+        )
+      }
+
+    </div>
+
+  </article>
+
+</BaseLayout>

@@ -265,6 +265,280 @@ img {
 
 
 /* =========================================================
+   Header
+   ========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+
+  z-index: 1000;
+
+  width: 100%;
+
+  background: rgba(8, 12, 15, 0.82);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+
+.header-container {
+  width: min(
+    var(--container-width),
+    calc(100% - (var(--container-padding) * 2))
+  );
+
+  min-height: 82px;
+
+  margin-inline: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 40px;
+}
+
+
+/* =========================================================
+   Logo
+   ========================================================= */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 12px;
+
+  flex-shrink: 0;
+}
+
+
+.logo-symbol {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  color: var(--color-accent);
+
+  border: 2px solid var(--color-accent);
+
+  transform: rotate(45deg);
+
+  font-size: 22px;
+}
+
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1;
+}
+
+
+.logo-text strong {
+  font-size: 19px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.12em;
+}
+
+
+.logo-text small {
+  margin-top: 5px;
+
+  color: var(--color-text-muted);
+
+  font-size: 8px;
+
+  letter-spacing: 0.25em;
+}
+
+
+/* =========================================================
+   Desktop Navigation
+   ========================================================= */
+
+.desktop-navigation {
+  margin-left: auto;
+}
+
+
+.desktop-navigation ul {
+  display: flex;
+
+  align-items: center;
+
+  gap: 34px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.desktop-navigation a {
+  position: relative;
+
+  color: var(--color-text-muted);
+
+  font-size: 14px;
+
+  transition: color var(--transition-fast);
+}
+
+
+.desktop-navigation a:hover {
+  color: var(--color-text);
+}
+
+
+.desktop-navigation a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -8px;
+
+  width: 0;
+  height: 1px;
+
+  background: var(--color-accent);
+
+  transition: width var(--transition-normal);
+}
+
+
+.desktop-navigation a:hover::after {
+  width: 100%;
+}
+
+
+/* =========================================================
+   Header Actions
+   ========================================================= */
+
+.header-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+
+.github-link {
+  display: flex;
+
+  width: 24px;
+  height: 24px;
+
+  align-items: center;
+  justify-content: center;
+
+  color: var(--color-text-muted);
+
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+.github-link svg {
+  width: 22px;
+  height: 22px;
+}
+
+
+.github-link:hover {
+  color: var(--color-accent);
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   Mobile Menu
+   ========================================================= */
+
+.menu-button {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 10px;
+
+  background: transparent;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+
+  cursor: pointer;
+}
+
+
+.menu-button span {
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  margin-block: 5px;
+
+  background: var(--color-text);
+
+  transition: transform var(--transition-fast);
+}
+
+
+.mobile-navigation {
+  width: min(
+    var(--container-width),
+    calc(100% - (var(--container-padding) * 2))
+  );
+
+  margin-inline: auto;
+
+  padding-bottom: 24px;
+}
+
+
+.mobile-navigation ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.mobile-navigation a {
+  display: block;
+
+  padding-block: 13px;
+
+  color: var(--color-text-muted);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+.mobile-navigation a:hover {
+  color: var(--color-accent);
+}
+
+/* =========================================================
    Responsive
    ========================================================= */
 
@@ -276,6 +550,22 @@ img {
 
   .section {
     padding-block: 70px;
+  }
+
+    .header-container {
+    min-height: 70px;
+  }
+
+  .desktop-navigation {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+
+  .github-link {
+    display: none;
   }
 
 }

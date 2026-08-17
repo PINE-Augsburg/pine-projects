@@ -1,0 +1,143 @@
+---
+const navigation = [
+  { name: "Projekte", href: "/projekte" },
+  { name: "Technologien", href: "/technologien" },
+  { name: "Über mich", href: "/ueber-mich" },
+  { name: "Blog", href: "/blog" },
+  { name: "Kontakt", href: "/kontakt" },
+];
+---
+
+<header class="site-header">
+  <div class="header-container">
+
+    <!-- Logo -->
+    <a
+      href="/"
+      class="logo"
+      aria-label="PINE Projects – Startseite"
+    >
+      <span class="logo-symbol" aria-hidden="true">
+        ◇
+      </span>
+
+      <span class="logo-text">
+        <strong>PINE</strong>
+        <small>PROJECTS</small>
+      </span>
+    </a>
+
+
+    <!-- Desktop Navigation -->
+    <nav
+      class="desktop-navigation"
+      aria-label="Hauptnavigation"
+    >
+      <ul>
+        {
+          navigation.map((item) => (
+            <li>
+              <a href={item.href}>
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+
+    <!-- Rechte Seite -->
+    <div class="header-actions">
+
+      <a
+        href="https://github.com/"
+        class="github-link"
+        aria-label="GitHub öffnen"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            fill="currentColor"
+            d="M12 .7a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.3c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .7Z"
+          />
+        </svg>
+      </a>
+
+
+      <!-- Mobile Menu Button -->
+      <button
+        class="menu-button"
+        type="button"
+        aria-label="Navigation öffnen"
+        aria-expanded="false"
+        aria-controls="mobile-navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div>
+  </div>
+
+
+  <!-- Mobile Navigation -->
+
+  <nav
+    id="mobile-navigation"
+    class="mobile-navigation"
+    aria-label="Mobile Navigation"
+    hidden
+  >
+    <ul>
+      {
+        navigation.map((item) => (
+          <li>
+            <a href={item.href}>
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+
+<script>
+  const button =
+    document.querySelector<HTMLButtonElement>(".menu-button");
+
+  const navigation =
+    document.querySelector<HTMLElement>("#mobile-navigation");
+
+  if (button && navigation) {
+
+    button.addEventListener("click", () => {
+
+      const isOpen =
+        button.getAttribute("aria-expanded") === "true";
+
+      button.setAttribute(
+        "aria-expanded",
+        String(!isOpen)
+      );
+
+      button.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Navigation öffnen"
+          : "Navigation schließen"
+      );
+
+      navigation.hidden = isOpen;
+
+    });
+
+  }
+</script>

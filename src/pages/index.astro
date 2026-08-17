@@ -1,19 +1,42 @@
 ---
-const title = "PINE Projects";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{title}</title>
-  </head>
+<BaseLayout
+  title="PINE Projects"
+  description="Open Source Projekte rund um Home Automation, ESP32, IoT, Server, 3D-Druck und DIY."
+>
 
-  <body>
-    <main>
-      <h1>PINE Projects</h1>
-      <p>Astro funktioniert.</p>
-    </main>
-  </body>
-</html>
+  <section class="section">
+
+    <div class="container">
+
+      <p class="accent">
+        SMART. OPEN. CONNECTED.
+      </p>
+
+      <h1>
+        Open Source Projekte<br />
+        für ein
+        <span class="accent">
+          vernetztes Leben.
+        </span>
+      </h1>
+
+      <p class="muted">
+        Ich entwickle und integriere smarte Lösungen rund um
+        Home Automation, IoT, 3D-Druck, Server und mehr.
+      </p>
+
+      <a
+        href="#projekte"
+        class="button button-primary"
+      >
+        Projekte entdecken →
+      </a>
+
+    </div>
+
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Open Source Projekte rund um Home Automation, IoT, Server, 3D-Druck und DIY."
+} = Astro.props;
+
+const siteName = "PINE Projects";
+
+const pageTitle =
+  title === siteName
+    ? title
+    : `${title} | ${siteName}`;
+---
+
+<!doctype html>
+
+<html lang="de">
+
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+
+    <meta
+      name="description"
+      content={description}
+    />
+
+    <meta name="theme-color" content="#080c0f" />
+
+    <title>{pageTitle}</title>
+
+  </head>
+
+  <body>
+
+    <a
+      href="#main-content"
+      class="skip-link"
+    >
+      Zum Inhalt springen
+    </a>
+
+    <main id="main-content">
+
+      <slot />
+
+    </main>
+
+  </body>
+
+</html>

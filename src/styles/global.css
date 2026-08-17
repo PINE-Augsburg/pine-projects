@@ -1,0 +1,308 @@
+/* =========================================================
+   PINE Projects
+   Global Design System
+   ========================================================= */
+
+/* ---------- Variablen ---------- */
+
+:root {
+  /* Hintergrund */
+  --color-background: #080c0f;
+  --color-background-soft: #0b1014;
+
+  /* Oberflächen / Karten */
+  --color-surface: #0e1418;
+  --color-surface-hover: #131b20;
+
+  /* Text */
+  --color-text: #f5f5f3;
+  --color-text-muted: #a7adb2;
+
+  /* PINE Gold */
+  --color-accent: #e7b64b;
+  --color-accent-hover: #f2c665;
+
+  /* Linien */
+  --color-border: #252c31;
+
+  /* Statusfarben */
+  --color-success: #6fcf97;
+  --color-warning: #f2c94c;
+  --color-error: #eb5757;
+
+  /* Layout */
+  --container-width: 1440px;
+  --container-padding: 24px;
+
+  /* Rundungen */
+  --radius-small: 6px;
+  --radius-medium: 12px;
+  --radius-large: 18px;
+
+  /* Animation */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
+
+
+/* =========================================================
+   Reset
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 70% 0%,
+      rgba(31, 50, 60, 0.15),
+      transparent 35%
+    ),
+    var(--color-background);
+
+  color: var(--color-text);
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 16px;
+  line-height: 1.7;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================================
+   Typografie
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0;
+
+  line-height: 1.15;
+  font-weight: 500;
+
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-size: clamp(2.7rem, 6vw, 5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+p {
+  margin-top: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   Accessibility
+   ========================================================= */
+
+/*
+ * Sichtbarer Tastatur-Fokus.
+ * Sehr wichtig für Bedienung ohne Maus.
+ */
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+
+/*
+ * Skip-Link:
+ * Wird später im BaseLayout verwendet.
+ */
+
+.skip-link {
+  position: absolute;
+
+  top: -100px;
+  left: 20px;
+
+  z-index: 9999;
+
+  padding: 10px 18px;
+
+  background: var(--color-accent);
+  color: #080c0f;
+
+  border-radius: var(--radius-small);
+
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 20px;
+}
+
+
+/* =========================================================
+   Layout
+   ========================================================= */
+
+.container {
+  width: min(
+    var(--container-width),
+    calc(100% - (var(--container-padding) * 2))
+  );
+
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: 100px;
+}
+
+
+/* =========================================================
+   Allgemeine Elemente
+   ========================================================= */
+
+.accent {
+  color: var(--color-accent);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+
+/* ---------- Buttons ---------- */
+
+.button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+
+  padding: 10px 22px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+
+  font-weight: 500;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.button:hover {
+  border-color: var(--color-accent);
+
+  transform: translateY(-2px);
+}
+
+
+.button-primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+
+  color: #080c0f;
+}
+
+.button-primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+
+/* =========================================================
+   Bilder
+   ========================================================= */
+
+img {
+  display: block;
+
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* =========================================================
+   Auswahl
+   ========================================================= */
+
+::selection {
+  background: var(--color-accent);
+  color: #080c0f;
+}
+
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  :root {
+    --container-padding: 18px;
+  }
+
+  .section {
+    padding-block: 70px;
+  }
+
+}
+
+
+/* =========================================================
+   Reduced Motion
+   ========================================================= */
+
+/*
+ * Benutzer, die Animationen im Betriebssystem deaktiviert haben,
+ * bekommen auch auf PINE Projects möglichst keine Animationen.
+ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+}

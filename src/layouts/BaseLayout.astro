@@ -6,11 +6,13 @@ import Header from "../components/Header.astro";
 interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
-  description = "Open Source Projekte rund um Home Automation, IoT, Server, 3D-Druck und DIY."
+  description = "Open Source Projekte rund um Home Automation, IoT, Server, 3D-Druck und DIY.",
+  noindex = false,
 } = Astro.props;
 
 const siteName = "PINE Projects";
@@ -19,6 +21,13 @@ const pageTitle =
   title === siteName
     ? title
     : `${title} | ${siteName}`;
+
+const canonicalURL = new URL(
+  Astro.url.pathname,
+  Astro.site
+);
+
+
 ---
 
 <!doctype html>
@@ -27,23 +36,102 @@ const pageTitle =
 
   <head>
 
-    <meta charset="UTF-8" />
+  <meta charset="UTF-8" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1"
-    />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  />
 
-    <meta
-      name="description"
-      content={description}
-    />
+  <title>{pageTitle}</title>
 
-    <meta name="theme-color" content="#080c0f" />
+  <meta
+    name="description"
+    content={description}
+  />
 
-    <title>{pageTitle}</title>
+  <meta
+    name="robots"
+    content={noindex ? "noindex, nofollow" : "index, follow"}
+  />
 
-  </head>
+  <meta
+    name="theme-color"
+    content="#080c0f"
+  />
+
+
+  <!-- Canonical -->
+
+  <link
+    rel="canonical"
+    href={canonicalURL}
+  />
+
+
+  <!-- Sitemap -->
+
+  <link
+    rel="sitemap"
+    href="/sitemap-index.xml"
+  />
+
+
+  <!-- Open Graph -->
+
+  <meta
+    property="og:type"
+    content="website"
+  />
+
+  <meta
+    property="og:site_name"
+    content="PINE Projects"
+  />
+
+  <meta
+    property="og:title"
+    content={pageTitle}
+  />
+
+  <meta
+    property="og:description"
+    content={description}
+  />
+
+  <meta
+    property="og:url"
+    content={canonicalURL}
+  />
+
+  
+
+  <meta
+    property="og:locale"
+    content="de_DE"
+  />
+
+
+  <!-- X / Twitter -->
+
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  />
+
+  <meta
+    name="twitter:title"
+    content={pageTitle}
+  />
+
+  <meta
+    name="twitter:description"
+    content={description}
+  />
+
+  
+
+</head>
 
   <body>
 

@@ -1843,6 +1843,16 @@ img {
     var(--color-accent);
 }
 
+.desktop-navigation a[aria-current="page"],
+.mobile-navigation a[aria-current="page"] {
+  color: var(--color-accent);
+}
+
+.desktop-navigation a[aria-current="page"]::after {
+  width: 100%;
+}
+
+
 /* =========================================================
    Responsive
    ========================================================= */

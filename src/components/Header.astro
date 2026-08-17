@@ -6,6 +6,8 @@ const navigation = [
   { name: "Blog", href: "/blog" },
   { name: "Kontakt", href: "/kontakt" },
 ];
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="site-header">
@@ -37,9 +39,17 @@ const navigation = [
         {
           navigation.map((item) => (
             <li>
-              <a href={item.href}>
+              <a
+                href={item.href}
+                aria-current={
+                    currentPath === item.href ||
+                    (item.href !== "/" && currentPath.startsWith(item.href + "/"))
+                    ? "page"
+                    : undefined
+                }
+                >
                 {item.name}
-              </a>
+                </a>
             </li>
           ))
         }
@@ -98,8 +108,16 @@ const navigation = [
       {
         navigation.map((item) => (
           <li>
-            <a href={item.href}>
-              {item.name}
+            <a
+            href={item.href}
+            aria-current={
+                currentPath === item.href ||
+                (item.href !== "/" && currentPath.startsWith(item.href + "/"))
+                ? "page"
+                : undefined
+            }
+            >
+            {item.name}
             </a>
           </li>
         ))
@@ -116,6 +134,15 @@ const navigation = [
   const navigation =
     document.querySelector<HTMLElement>("#mobile-navigation");
 
+  function closeMenu() {
+    if (!button || !navigation) return;
+
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-label", "Navigation öffnen");
+
+    navigation.hidden = true;
+  }
+
   if (button && navigation) {
 
     button.addEventListener("click", () => {
@@ -123,21 +150,39 @@ const navigation = [
       const isOpen =
         button.getAttribute("aria-expanded") === "true";
 
-      button.setAttribute(
-        "aria-expanded",
-        String(!isOpen)
-      );
+      if (isOpen) {
+        closeMenu();
+        return;
+      }
 
-      button.setAttribute(
-        "aria-label",
-        isOpen
-          ? "Navigation öffnen"
-          : "Navigation schließen"
-      );
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-label", "Navigation schließen");
 
-      navigation.hidden = isOpen;
+      navigation.hidden = false;
+    });
+
+
+    document.addEventListener("keydown", (event) => {
+
+      if (event.key === "Escape") {
+
+        closeMenu();
+
+        button.focus();
+      }
 
     });
+
+
+    navigation
+      .querySelectorAll("a")
+      .forEach((link) => {
+
+        link.addEventListener("click", () => {
+          closeMenu();
+        });
+
+      });
 
   }
 </script>

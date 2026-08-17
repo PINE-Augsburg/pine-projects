@@ -1,0 +1,66 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+import {
+  projects
+} from "../data/projects";
+
+const featuredProjects =
+  projects.filter(
+    (project) => project.featured
+  );
+---
+
+<section
+  class="projects-section section"
+  id="projekte"
+>
+
+  <div class="container">
+
+    <div class="section-header">
+
+      <div>
+
+        <p class="section-eyebrow">
+          AUSGEWÄHLTE ARBEITEN
+        </p>
+
+        <h2>
+          Aktuelle Projekte
+        </h2>
+
+      </div>
+
+
+      <a
+        href="/projekte"
+        class="section-link"
+      >
+        Alle Projekte
+
+        <span aria-hidden="true">
+          →
+        </span>
+      </a>
+
+    </div>
+
+
+    <div class="projects-grid">
+
+      {
+        featuredProjects.map(
+          (project) => (
+            <ProjectCard
+              project={project}
+            />
+          )
+        )
+      }
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
 ---
 
 <BaseLayout
@@ -7,36 +9,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   description="Open Source Projekte rund um Home Automation, ESP32, IoT, Server, 3D-Druck und DIY."
 >
 
-  <section class="section">
-
-    <div class="container">
-
-      <p class="accent">
-        SMART. OPEN. CONNECTED.
-      </p>
-
-      <h1>
-        Open Source Projekte<br />
-        für ein
-        <span class="accent">
-          vernetztes Leben.
-        </span>
-      </h1>
-
-      <p class="muted">
-        Ich entwickle und integriere smarte Lösungen rund um
-        Home Automation, IoT, 3D-Druck, Server und mehr.
-      </p>
-
-      <a
-        href="#projekte"
-        class="button button-primary"
-      >
-        Projekte entdecken →
-      </a>
-
-    </div>
-
-  </section>
-
+  <Hero />
+  <ProjectGrid />
 </BaseLayout>

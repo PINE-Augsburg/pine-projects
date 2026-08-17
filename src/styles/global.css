@@ -2250,6 +2250,329 @@ img {
 }
 
 /* =========================================================
+   Footer
+   ========================================================= */
+
+.site-footer {
+  margin-top: 100px;
+
+  background: #070a0c;
+
+  border-top:
+    1px solid var(--color-border);
+}
+
+
+.footer-main {
+  display: grid;
+
+  grid-template-columns:
+    minmax(260px, 1fr)
+    minmax(500px, 1.4fr);
+
+  gap: 100px;
+
+  padding:
+    70px 0 60px;
+}
+
+
+/* =========================================================
+   Footer Brand
+   ========================================================= */
+
+.footer-brand {
+  max-width: 400px;
+}
+
+
+.footer-logo {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 25px;
+}
+
+
+.footer-logo > span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  color:
+    var(--color-accent);
+
+  border:
+    1px solid var(--color-accent);
+
+  transform:
+    rotate(45deg);
+}
+
+
+.footer-logo > div {
+  display: flex;
+
+  flex-direction: column;
+
+  line-height: 1;
+}
+
+
+.footer-logo strong {
+  font-size: 17px;
+
+  letter-spacing: 0.12em;
+}
+
+
+.footer-logo small {
+  margin-top: 5px;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 7px;
+
+  letter-spacing: 0.25em;
+}
+
+
+.footer-brand > p {
+  color:
+    var(--color-text-muted);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.footer-brand .footer-claim {
+  margin-top: 25px;
+
+  color:
+    var(--color-accent);
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.16em;
+}
+
+
+/* =========================================================
+   Footer Navigation
+   ========================================================= */
+
+.footer-navigation {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 40px;
+}
+
+
+.footer-navigation h2 {
+  margin-bottom: 18px;
+
+  color:
+    var(--color-text);
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+}
+
+
+.footer-navigation ul {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+
+.footer-navigation li {
+  margin-bottom: 10px;
+}
+
+
+.footer-navigation a {
+  color:
+    var(--color-text-muted);
+
+  font-size: 12px;
+
+  transition:
+    color var(--transition-fast);
+}
+
+
+.footer-navigation a:hover,
+.footer-navigation a:focus-visible {
+  color:
+    var(--color-accent);
+}
+
+
+/* =========================================================
+   Footer Bottom
+   ========================================================= */
+
+.footer-bottom {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding:
+    22px 0;
+
+  border-top:
+    1px solid var(--color-border);
+}
+
+
+.footer-bottom p {
+  margin: 0;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 10px;
+}
+
+/* =========================================================
+   Contact
+   ========================================================= */
+
+.contact-page {
+  padding-top: 90px;
+}
+
+.contact-header {
+  max-width: 800px;
+  margin-bottom: 65px;
+}
+
+.contact-header h1 {
+  margin-bottom: 25px;
+}
+
+.contact-intro {
+  max-width: 700px;
+  margin-bottom: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 1.1rem;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   Contact Grid
+   ========================================================= */
+
+.contact-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-bottom: 80px;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 320px;
+
+  padding: 32px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #10171b,
+      #0b1013
+    );
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-medium);
+}
+
+.contact-number {
+  margin-bottom: 45px;
+
+  color: var(--color-accent);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 0.15em;
+}
+
+.contact-card h2 {
+  margin-bottom: 18px;
+
+  font-size: 1.5rem;
+}
+
+.contact-card p {
+  margin-bottom: 30px;
+
+  color: var(--color-text-muted);
+}
+
+.contact-card .button {
+  align-self: flex-start;
+
+  margin-top: auto;
+}
+
+
+/* =========================================================
+   Contact Note
+   ========================================================= */
+
+.contact-note {
+  max-width: 750px;
+
+  padding-top: 45px;
+
+  border-top:
+    1px solid var(--color-border);
+}
+
+.contact-note > p:last-child {
+  color: var(--color-text-muted);
+}
+
+/* =========================================================
    Responsive
    ========================================================= */
 @media (max-width: 1100px) {
@@ -2427,6 +2750,29 @@ img {
   gap: 35px;
 }
 
+.contact-grid {
+  grid-template-columns: 1fr;
+}
+
+.contact-card {
+  min-height: auto;
+  padding: 26px;
+}
+
+.footer-main {
+  grid-template-columns: 1fr;
+
+  gap: 50px;
+
+  padding:
+    55px 0 45px;
+}
+
+.footer-navigation {
+  grid-template-columns:
+    repeat(3, 1fr);
+}
+
 }
 
 
@@ -2493,6 +2839,20 @@ img {
   min-height: auto;
 
   padding: 21px;
+}
+
+.footer-navigation {
+  grid-template-columns: 1fr;
+
+  gap: 30px;
+}
+
+.footer-bottom {
+  align-items: flex-start;
+
+  flex-direction: column;
+
+  gap: 8px;
 }
 
 }

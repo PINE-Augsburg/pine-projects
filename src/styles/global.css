@@ -1852,6 +1852,226 @@ img {
   width: 100%;
 }
 
+/* =========================================================
+   Technologies
+   ========================================================= */
+
+.technologies-page {
+  padding-top: 90px;
+}
+
+
+.technologies-header {
+  max-width: 750px;
+
+  margin-bottom: 65px;
+}
+
+
+.technologies-header h1 {
+  margin-bottom: 22px;
+}
+
+
+.technologies-intro {
+  max-width: 650px;
+
+  margin-bottom: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 1.1rem;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   Technology Grid
+   ========================================================= */
+
+.technology-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   Technology Card
+   ========================================================= */
+
+.technology-card {
+  display: flex;
+
+  flex-direction: column;
+
+  min-height: 250px;
+
+  padding: 25px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #10171b,
+      #0b1013
+    );
+
+  border:
+    1px solid var(--color-border);
+
+  border-radius:
+    var(--radius-medium);
+
+  transition:
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+
+.technology-card:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(231, 182, 75, 0.45);
+}
+
+
+/* =========================================================
+   Technology Header
+   ========================================================= */
+
+.technology-card-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 15px;
+}
+
+
+.technology-symbol {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  color:
+    var(--color-accent);
+
+  background:
+    rgba(231, 182, 75, 0.06);
+
+  border:
+    1px solid rgba(231, 182, 75, 0.2);
+
+  border-radius: 7px;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 13px;
+}
+
+
+.technology-card h2 {
+  margin: 0;
+
+  font-size: 1.15rem;
+
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   Technology Project Count
+   ========================================================= */
+
+.technology-project-count {
+  margin-bottom: 25px;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   Linked Projects
+   ========================================================= */
+
+.technology-projects {
+  margin:
+    auto 0 0;
+
+  padding: 0;
+
+  list-style: none;
+
+  border-top:
+    1px solid var(--color-border);
+}
+
+
+.technology-projects li {
+  border-bottom:
+    1px solid var(--color-border);
+}
+
+
+.technology-projects li:last-child {
+  border-bottom: 0;
+}
+
+
+.technology-projects a {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding:
+    11px 0;
+
+  color:
+    var(--color-text-muted);
+
+  font-size: 12px;
+
+  transition:
+    color var(--transition-fast);
+}
+
+
+.technology-projects a:hover,
+.technology-projects a:focus-visible {
+  color:
+    var(--color-accent);
+}
+
+
+.technology-projects a span {
+  color:
+    var(--color-accent);
+}
 
 /* =========================================================
    Responsive
@@ -1859,6 +2079,15 @@ img {
 @media (max-width: 1100px) {
 
   .projects-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+@media (max-width: 1000px) {
+
+  .technology-grid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
   }
@@ -2062,6 +2291,16 @@ img {
 
   .project-meta-grid {
   grid-template-columns: 1fr;
+}
+
+.technology-grid {
+  grid-template-columns: 1fr;
+}
+
+.technology-card {
+  min-height: auto;
+
+  padding: 21px;
 }
 
 }

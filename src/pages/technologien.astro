@@ -1,0 +1,138 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const projects = await getCollection("projects");
+
+/*
+ * Alle Technologien aus allen Projekten sammeln.
+ * Map verhindert doppelte Einträge.
+ */
+const technologyMap = new Map<
+  string,
+  {
+    name: string;
+    projects: typeof projects;
+  }
+>();
+
+for (const project of projects) {
+  for (const technology of project.data.technologies) {
+
+    if (!technologyMap.has(technology)) {
+      technologyMap.set(technology, {
+        name: technology,
+        projects: [],
+      });
+    }
+
+    technologyMap.get(technology)?.projects.push(project);
+  }
+}
+
+/*
+ * Alphabetisch sortieren
+ */
+const technologies = Array.from(
+  technologyMap.values()
+).sort((a, b) =>
+  a.name.localeCompare(b.name, "de")
+);
+---
+
+<BaseLayout
+  title="Technologien"
+  description="Technologien und Plattformen, die in meinen Open-Source- und DIY-Projekten zum Einsatz kommen."
+>
+
+  <section class="section technologies-page">
+
+    <div class="container">
+
+      <header class="technologies-header">
+
+        <p class="section-eyebrow">
+          TECH STACK
+        </p>
+
+        <h1>
+          Technologien
+        </h1>
+
+        <p class="technologies-intro">
+          Werkzeuge, Plattformen und Technologien,
+          die ich für meine Projekte einsetze.
+        </p>
+
+      </header>
+
+
+      <div class="technology-grid">
+
+        {
+          technologies.map((technology) => (
+
+            <article class="technology-card">
+
+              <div class="technology-card-header">
+
+                <span
+                  class="technology-symbol"
+                  aria-hidden="true"
+                >
+                  &lt;/&gt;
+                </span>
+
+                <h2>
+                  {technology.name}
+                </h2>
+
+              </div>
+
+
+              <p class="technology-project-count">
+
+                {technology.projects.length === 1
+                  ? "1 Projekt"
+                  : `${technology.projects.length} Projekte`
+                }
+
+              </p>
+
+
+              <ul class="technology-projects">
+
+                {
+                  technology.projects.map((project) => (
+
+                    <li>
+
+                      <a
+                        href={`/projekte/${project.id}`}
+                      >
+                        {project.data.title}
+
+                        <span aria-hidden="true">
+                          →
+                        </span>
+                      </a>
+
+                    </li>
+
+                  ))
+                }
+
+              </ul>
+
+            </article>
+
+          ))
+        }
+
+      </div>
+
+    </div>
+
+  </section>
+
+</BaseLayout>
